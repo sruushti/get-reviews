@@ -7,4 +7,4 @@ jobs:
       - name: my-step
         run: echo "Hello World!"
       - name : Get GitHub Pull Request Reviewers
-        uses : sruushti/get-reviews@v1.1.2
+        uses : sruushti/get-reviews@v1.0
