@@ -4,8 +4,6 @@ jobs:
   my-job: 
     runs-on: ubuntu-latest 
     steps: 
-      # - name: my-step
-      #   run: echo "Hello World!"
       - name : Get GitHub Pull Request Reviewers
         id : reviews
         uses: LiamPerson/get-reviews-action@v1.0
@@ -13,8 +11,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
           GITHUB_REPOSITORY: "kubernetes/kubernetes" # Repo in 'owner/repo' format
           PULL_REQUEST_ID: 127131 
-       - name: Print Reviewers Path
-        run: echo "Reviews JSON file path: ${{ steps.reviews.outputs.reviews_file_path }}"
+      - name: Print File Path
+        run: |
+          echo "Reviews JSON file path: ${{ steps.reviews.outputs.reviews_file_path }}"
+          - name: Debug Action Outputs
+          run: |
+            echo "Available outputs:"
+            echo "${{ toJSON(steps.reviews.outputs) }}"        
       # - name: Consume reviews
       #   uses: some/workflow@version
       #   with:
