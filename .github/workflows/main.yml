@@ -13,6 +13,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
           GITHUB_REPOSITORY: "kubernetes/kubernetes" # Repo in 'owner/repo' format
           PULL_REQUEST_ID: 127131 
+       - name: Print Reviewers Path
+        run: echo "Reviews JSON file path: ${{ steps.reviews.outputs.reviews_file_path }}"
       # - name: Consume reviews
       #   uses: some/workflow@version
       #   with:
