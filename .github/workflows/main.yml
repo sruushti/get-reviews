@@ -10,7 +10,7 @@ jobs:
         id : reviews
         uses: LiamPerson/get-reviews-action@v1.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}  # Use GitHub-provided token
           GITHUB_REPOSITORY: "kubernetes/kubernetes" # Repo in 'owner/repo' format
           PULL_REQUEST_ID: 127131 
       - name: Process Reviews
