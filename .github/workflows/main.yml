@@ -4,7 +4,14 @@ jobs:
   my-job: 
     runs-on: ubuntu-latest 
     steps: 
-      - name: my-step
-        run: echo "Hello World!"
+      # - name: my-step
+      #   run: echo "Hello World!"
       - name : Get GitHub Pull Request Reviewers
-        uses : sruushti/get-reviews@v1.0
+        id : reviews
+        uses: LiamPerson/get-reviews-action@v1.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub-provided token
+          GITHUB_REPOSITORY: "kubernetes/kubernetes" # Repo in 'owner/repo' format
+          PULL_REQUEST_ID: 127131 
+      - name: Process Reviews
+        run: cat ${{ steps.reviews.outputs.reviews_file_path }}
